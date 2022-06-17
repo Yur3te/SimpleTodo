@@ -1,20 +1,27 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-export const TodoForm = () => {
+
+export const TodoForm = (props) => {
   const [input, SetInput] = useState("");
 
   const contentHandler = (event) => {
     SetInput(event.target.value);
   };
-  
-  //preventDefault by się nie refreshowała strona gdy dodajemy taska
-  const handleSubmit = (event) => {
+
+  const submitHandler = (event) => {
     event.preventDefault();
+
+    props.onSubmit({
+        text: input,
+        id: uuidv4()
+    })
     SetInput("");
+    
   };
 
   return (
-    <form className="todoform" onSubmit={handleSubmit}>
+    <form className="todoform" onSubmit={submitHandler}>
       <input
         type="text"
         placeholder="Write a task"
