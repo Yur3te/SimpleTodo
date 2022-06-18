@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 export const TodoForm = (props) => {
-  const [input, SetInput] = useState("");
+  const [input, SetInput] = useState(props.edit ? props.edit.value : '');
 
   const contentHandler = (event) => {
     SetInput(event.target.value);
@@ -13,8 +13,8 @@ export const TodoForm = (props) => {
     event.preventDefault();
 
     props.onSubmit({
-        text: input,
-        id: uuidv4()
+        id: uuidv4(),
+        text: input
     })
     SetInput("");
     
