@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Todo } from './Todo'
 import { TodoForm } from './TodoForm'
 
@@ -7,9 +7,19 @@ import { TodoForm } from './TodoForm'
 export const TodoList = () => {
     const [todos, setTodos] = useState([])
 
+     useEffect(() => {
+      getLocalTodos()
+    }, [])
+  
+    useEffect(() => {
+      saveLocalTodos()
+    }, [todos])
+
+
+
     const addTodo = todo => {
         setTodos([todo, ...todos])
-        console.log(...todos)
+
     }
 
     const completeTodo = (id) => {
@@ -24,14 +34,24 @@ export const TodoList = () => {
 
     const removeTodo = (id) => {
       const filteredList = [...todos].filter((todo) => todo.id !== id)
-      
       setTodos(filteredList)
     }
 
     const updateTodo = (todoId, newValue) => {
       setTodos((prev) => prev.map((item) => (item.id === todoId ? newValue : item)))
     }
-  
+
+    const getLocalTodos = () => {
+      const oldtodos = JSON.parse(localStorage.getItem("todos"))
+      setTodos(oldtodos)
+      
+    }
+
+    const saveLocalTodos = () => {
+      localStorage.setItem("todos", JSON.stringify(todos))
+    }
+
+
   return (
     <div>
         <h1>Your plans</h1>

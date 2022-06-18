@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 
 export const TodoForm = (props) => {
   const [input, SetInput] = useState(props.edit ? props.edit.value : '');
+
+  const inputRef = useRef(null)
+  useEffect(() => {
+    inputRef.current.focus()
+  })
 
   const contentHandler = (event) => {
     SetInput(event.target.value);
@@ -29,6 +34,7 @@ export const TodoForm = (props) => {
         name="text"
         className="todoinput"
         onChange={contentHandler}
+        ref={inputRef}
       />
       <button className="todobtn">Add</button>
     </form>
