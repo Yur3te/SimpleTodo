@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(
+    90deg,
+    rgb(74, 242, 248) 0%,
+    rgb(255, 8, 234) 100%
+  );
+}
+
+.todoapp {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 520px;
+    min-height: 700px;
+    background: #161a2b;
+    text-align: center;
+    margin: 50px auto;
+    border-radius: 10px;
+    padding-bottom: 32px;
+}
+
+h1 {
+    padding: 20px;
+    margin: 32px 0;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
+  }
+
+
+
+.todoform {
+    margin-bottom: 32px;
+  }
+  
+.todoinput {
+    padding: 10px;
+    border-radius: 4px 0 0 4px;
+    border: 2px solid rgb(74, 242, 248);
+    outline: none;
+    width: 320px;
+    background: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.todoinput.edit {
+    padding: 14px;
+    border-color: rgba(20, 159, 255, 1);
+}
+
+.todoinput::placeholder {
+    color: #888888;
+  }
+
+
+.todobtn {
+    padding: 12px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    background-color: rgb(74, 242, 248);
+    color: #fff;
+}
+
+.todobtn.edit {
+    background: linear-gradient(
+      90deg,
+      rgba(20, 159, 255, 1) 0%,
+      rgba(17, 122, 255, 1) 100%
+    );
+    padding: 16px;
+  }
+
+
+
+  
+.todocontainer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+
+
+.todorow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px auto;
+    color: #fff;
+    background: linear-gradient(
+        90deg,
+        rgba(20, 159, 255, 1) 0%,
+        rgba(17, 122, 255, 1) 100%
+    );
+
+    padding: 16px;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+
+.icons {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+
+.deleteicon {
+    margin-right: 5px;
+    color: #fff;
+  }
+
+.editicon {
+    color: #fff;
+}
+
