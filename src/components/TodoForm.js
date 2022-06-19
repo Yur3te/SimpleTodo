@@ -6,6 +6,7 @@ export const TodoForm = (props) => {
   const [input, SetInput] = useState(props.edit ? props.edit.value : '');
 
   const inputRef = useRef(null)
+
   useEffect(() => {
     inputRef.current.focus()
   })
@@ -27,16 +28,36 @@ export const TodoForm = (props) => {
 
   return (
     <form className="todoform" onSubmit={submitHandler}>
-      <input
-        type="text"
-        placeholder="Write a task"
-        value={input}
-        name="text"
-        className="todoinput"
-        onChange={contentHandler}
-        ref={inputRef}
-      />
-      <button className="todobtn">Add</button>
+      {props.edit ? (
+      <>
+        <input
+          type="text"
+          placeholder="Edit a task"
+          value={input}
+          name="text"
+          className="todoinput edit"
+          onChange={contentHandler}
+          ref={inputRef}
+        />
+        <button className="todobtn edit">Update</button>
+      </>
+      ): 
+      (
+      <>
+        <input
+          type="text"
+          placeholder="Write a task"
+          value={input}
+          name="text"
+          className="todoinput"
+          onChange={contentHandler}
+          ref={inputRef}
+        />
+        <button className="todobtn">Add</button>
+      </>
+      )
+      }
+     
     </form>
   );
 };

@@ -23,24 +23,28 @@ export const Todo = (props) => {
 
   return props.todos.map((todo, index) => (
     <div
-      className={todo.isCompleted ? "todocompleted" : "todonotdone"}
+      className={todo.isCompleted ? "todorow completed" : "todorow"}
       key={index}
     >
       <div key={todo.id} onClick={() => props.completeTodo(todo.id)}>
         {todo.text}
       </div>
-      <AiFillCloseCircle
-        onClick={() => {
-          props.removeTodo(todo.id);
-        }}
-        className="deleteicon"
-      />
-      <AiFillEdit
-        onClick={() => {
-          setEdit({ id: todo.id, value: todo.text });
-        }}
-        className="editicon"
-      />
+
+      <div className="icons">
+        <AiFillCloseCircle
+          onClick={() => {
+            props.removeTodo(todo.id);
+          }}
+          className="deleteicon"
+        />
+        <AiFillEdit
+          onClick={() => {
+            setEdit({ id: todo.id, value: todo.text });
+          }}
+          className="editicon"
+        />
+      </div>
+      
     </div>
   ));
 };

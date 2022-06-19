@@ -25,7 +25,7 @@ export const TodoList = () => {
     const completeTodo = (id) => {
       let uptatedTodos = todos.map(todo => {
         if (todo.id === id) {
-          todo.isComplete = !todo.isComplete
+          todo.isCompleted = !todo.isCompleted
         }
         return todo
       })
@@ -54,7 +54,7 @@ export const TodoList = () => {
 
   return (
     <div>
-        <h1>Your plans</h1>
+        <h1>TODO LIST</h1>
         <TodoForm onSubmit={addTodo}/>
         <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo}/>
     </div>
